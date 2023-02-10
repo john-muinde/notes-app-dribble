@@ -8,7 +8,8 @@ class TextFieldWidget extends StatelessWidget {
   final text;
   final controller;
   final bool password;
-  TextFieldWidget({
+  const TextFieldWidget({
+    super.key,
     required this.label,
     required this.text,
     this.controller,
@@ -23,9 +24,11 @@ class TextFieldWidget extends StatelessWidget {
         : null;
   }
 
+  @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.all( 10),
+    
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
