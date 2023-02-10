@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
-import 'constants.dart';
+import 'models/constants.dart';
+import 'views/components/boxContainer.dart';
+import 'views/components/components.dart';
+import 'views/components/textField.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,10 +50,10 @@ class MyHomePage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  boxContainer(
+                  BoxContainer(
                     child: GestureDetector(
                       onTap: () {},
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back_ios_new_outlined,
                         color: Constants.primaryWhite,
                         size: 30,
@@ -79,10 +82,10 @@ class MyHomePage extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: const [
-                      signUpIconsContainer(
+                      SignUpIconsContainer(
                         child: Icons.person,
                       ),
-                      signUpIconsContainer(
+                      SignUpIconsContainer(
                         child: Icons.apple_rounded,
                       )
                     ],
@@ -91,9 +94,18 @@ class MyHomePage extends StatelessWidget {
               ),
               Column(
                 children: [
-                  textFieldWidget(label: 'Name'),
-                  textFieldWidget(label: 'Name'),
-                  textFieldWidget(label: 'Name'),
+                  TextFieldWidget(
+                    label: 'Name',
+                    text: 'Jane Doe',
+                  ),
+                  TextFieldWidget(
+                    label: 'Email',
+                    text: 'tim@apple.com',
+                  ),
+                  TextFieldWidget(
+                    label: 'Password',
+                    text: 'Pick a strong Password',
+                  ),
                 ],
               )
             ],
@@ -102,98 +114,4 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
-}
-
-class signUpIconsContainer extends StatelessWidget {
-  final child;
-  const signUpIconsContainer({
-    super.key,
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: boxContainer(
-          child: Icon(
-        child,
-        color: Constants.primaryWhite,
-        size: 35,
-      )),
-    );
-  }
-}
-
-class boxContainer extends StatelessWidget {
-  final Widget child;
-  final padding;
-  final margin;
-  const boxContainer(
-      {super.key,
-      required this.child,
-      this.padding = 13.0,
-      this.margin = 13.0});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(margin),
-      padding: EdgeInsets.all(padding),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: Constants.boxGreyLight.withOpacity(1),
-          width: 4.0,
-          style: BorderStyle.solid,
-          strokeAlign: BorderSide.strokeAlignOutside,
-        ),
-      ),
-      child: child,
-    );
-  }
-}
-
-var linearGradient = const LinearGradient(
-  colors: [
-    Constants.buttonGradientLeft,
-    Constants.buttonGradientRight,
-  ],
-);
-
-Widget textFieldWidget({label, controller, password = false, props}) {
-  var suffixIcon = password
-      ? IconButton(
-          icon: const Icon(Icons.remove_red_eye_outlined),
-          onPressed: () {},
-        )
-      : null;
-
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text('Name',),
-      SizedBox(
-        height: 10,
-      ),
-      TextFormField(
-        decoration: InputDecoration(
-          labelText: "Resevior Name",
-          labelStyle: TextStyle(color: Constants.boxGreyLighter, fontSize: 17),
-          fillColor: Colors.white,
-          border: GradientOutlineInputBorder(
-            gradient: linearGradient,
-            width: 3,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.white,
-              width: 2.0,
-            ),
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-        ),
-      ),
-    ],
-  );
 }

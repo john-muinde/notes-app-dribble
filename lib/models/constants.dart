@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 extension Constants on Color {
+  static const linearGradient = LinearGradient(
+    colors: [
+      Constants.buttonGradientLeft,
+      Constants.buttonGradientRight,
+    ],
+  );
   static const Color primaryWhite = Color.fromARGB(255, 251, 251, 251);
   static const Color purpleGradient = Color.fromARGB(255, 185, 0, 255);
   static const Color boxGrey = Color.fromARGB(255, 23, 23, 23);
