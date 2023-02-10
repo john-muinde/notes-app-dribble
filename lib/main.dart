@@ -1,6 +1,5 @@
+import 'package:daystar_login/models/constants.dart';
 import 'package:flutter/material.dart';
-
-import 'models/constants.dart';
 
 import 'views/sign_up_screen.dart';
 
@@ -16,28 +15,37 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      home: MyHomePage(),
+      themeMode: ThemeMode.dark,
       theme: ThemeData(
-        primarySwatch: MaterialConstants.primaryWhite,
-        textTheme: const TextTheme(
+        primaryColor: Constants.backgroundBlack,
+        primaryTextTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Constants.primaryWhite),
+          bodySmall: TextStyle(color: Constants.primaryWhite),
           displayLarge: TextStyle(color: Constants.primaryWhite),
           displayMedium: TextStyle(color: Constants.primaryWhite),
-          bodyMedium: TextStyle(color: Constants.primaryWhite),
-          titleMedium: TextStyle(color: Constants.primaryWhite),
+          titleLarge: TextStyle(color: Constants.primaryWhite),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all(
+              Theme.of(context).textTheme.bodyLarge?.color,
+            ),
+          ),
         ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, title});
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Constants.backgroundBlack,
+        backgroundColor: Theme.of(context).primaryColor,
         body: Container(
           margin: const EdgeInsets.only(left: 10),
           child: const SignUpScreen(),
