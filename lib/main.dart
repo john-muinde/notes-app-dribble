@@ -1,7 +1,8 @@
 import 'package:daystar_login/models/constants.dart';
+import 'package:daystar_login/routes.dart';
 import 'package:flutter/material.dart';
 
-import 'views/sign_up_screen.dart';
+import 'views/screens/auth/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      initialRoute: Routes.sign_up,
+      onGenerateRoute: Routes.controller,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
         primaryColor: Constants.backgroundBlack,
@@ -32,23 +34,6 @@ class MyApp extends StatelessWidget {
               Theme.of(context).textTheme.bodyLarge?.color,
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Theme.of(context).primaryColor,
-        body: Container(
-          margin: const EdgeInsets.only(left: 10),
-          child: const SignUpScreen(),
         ),
       ),
     );

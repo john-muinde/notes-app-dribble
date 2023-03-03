@@ -5,7 +5,13 @@ import '../../models/constants.dart';
 class ButtonWidget extends StatelessWidget {
   final text;
   final padding;
-  const ButtonWidget({super.key, required this.text, this.padding = 15});
+  final VoidCallback handlerFunction;
+  const ButtonWidget({
+    super.key,
+    required this.text,
+    this.padding = 15,
+    required this.handlerFunction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +21,7 @@ class ButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.transparent)),
-        onPressed: () {},
+        onPressed: handlerFunction,
         child: Ink(
           decoration: const BoxDecoration(
             gradient: Constants.linearGradient,
