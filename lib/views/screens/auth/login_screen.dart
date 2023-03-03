@@ -116,8 +116,10 @@ class _LogInScreenState extends State<LogInScreen> {
                     ],
                   ),
                   sized(height: 25),
-                  const ButtonWidget(
+                  ButtonWidget(
                     text: 'Log in',
+                    handlerFunction: () => Navigator.of(context)
+                        .pushReplacementNamed(Routes.landingScreen),
                   ),
                   sized(height: 25),
                   SizedBox(
