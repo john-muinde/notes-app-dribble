@@ -110,10 +110,10 @@ class _LandingScreenState extends State<LandingScreen> {
                           icon: e['color'] == null
                               ? Icon(e['icon'] as IconData, size: 30)
                               : InkWell(
-                                splashColor: Constants.iconBackground,
-                                onTap: (){},
-                                child: Container(
-                                  padding: const EdgeInsets.all(10),
+                                  splashColor: Constants.iconBackground,
+                                  onTap: () {},
+                                  child: Container(
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       gradient: const LinearGradient(
                                         colors: [
@@ -125,11 +125,13 @@ class _LandingScreenState extends State<LandingScreen> {
                                       ),
                                       borderRadius: BorderRadius.circular(14),
                                     ),
-                                    child: Icon(e['icon'] as IconData, size: 30,
+                                    child: Icon(
+                                      e['icon'] as IconData,
+                                      size: 30,
                                       color: Constants.primaryWhite,
                                     ),
                                   ),
-                              ),
+                                ),
                           label: '',
                         ),
                       )

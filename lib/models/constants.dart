@@ -24,8 +24,10 @@ extension Constants on Color {
   //!Landing pages
   static const Color sliderBackground = Color(0xff414052);
   static const Color iconBackground = Color(0xffac6dde);
-  static const Color iconBackground2 = Color(0xff70c4bf);
   static const Color cardBackground = Color(0xff272732);
+  static const Color iconBackground2 = Color(0xff70c4bf);
+  static const Color iconBackground3 = Color(0xfffc76a1);
+  static const Color iconBackground4 = Color(0xffcfb452);
   static const Color dueDate = Color(0xff82603e);
   static const Color iconText = Color(0xff909095);
 }

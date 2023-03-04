@@ -4,23 +4,29 @@ import '../../models/constants.dart';
 
 class BoxContainer extends StatelessWidget {
   final Widget child;
-  final padding;
-  final margin;
-  final background;
+  final double padding;
+  final double margin;
+  final double background;
   final color;
   final borderWidth;
-  const BoxContainer({
-    super.key,
-    required this.child,
-    this.padding = 13.0,
-    this.margin = 13.0,
-    this.background = .5,
-    this.color,
-    this.borderWidth,
-  });
+  final height;
+  final width;
+
+  const BoxContainer(
+      {super.key,
+      required this.child,
+      this.padding = 13.0,
+      this.margin = 13.0,
+      this.background = .5,
+      this.color,
+      this.borderWidth,
+      this.height,
+      this.width});
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
+      width: width,
       margin: EdgeInsets.all(margin),
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
