@@ -20,22 +20,28 @@ class _LandingScreenState extends State<LandingScreen> {
     {
       'page': DashboardPage(),
       'title': 'Dashboard',
+      'icon': Icons.dashboard,
     },
     {
       'page': CollectionsPage(),
       'title': 'Collections',
+      'icon': Icons.folder_copy
     },
     {
       'page': NewCollectionPage(),
       'title': 'New Collection',
+      'icon': Icons.add,
+      'color': Constants.buttonGradientLeft
     },
     {
       'page': ToDoPage(),
       'title': 'To Do',
+      'icon': Icons.notifications_none_rounded,
     },
     {
       'page': ProfilePage(),
       'title': 'My Profile',
+      'icon': Icons.person,
     },
   ];
 
@@ -62,7 +68,6 @@ class _LandingScreenState extends State<LandingScreen> {
               children: [
                 CustomAppBar(
                   title: _pages[_selectedPageIndex]['title'] as String,
-                  
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.75,
@@ -72,40 +77,66 @@ class _LandingScreenState extends State<LandingScreen> {
               ],
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            onTap: _selectPage,
-            backgroundColor: Theme.of(context).primaryColor,
-            unselectedItemColor: Constants.boxGreyLighter,
-            selectedItemColor: Constants.primaryWhite,
-            currentIndex: _selectedPageIndex,
-            // type: BottomNavigationBarType.shifting,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.category_outlined),
-                label: '',
+          bottomNavigationBar: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(10),
+                topLeft: Radius.circular(10),
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.category_outlined),
-                label: '',
+              boxShadow: [
+                BoxShadow(
+                  color: Constants.boxGreyLight,
+                  spreadRadius: 0,
+                  blurRadius: 5,
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(10.0),
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.category_outlined),
-                label: '',
+              child: BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                onTap: _selectPage,
+                backgroundColor: Theme.of(context).primaryColor,
+                unselectedItemColor: Constants.boxGreyLighter,
+                selectedItemColor: Constants.primaryWhite,
+                currentIndex: _selectedPageIndex,
+                items: [
+                  ..._pages
+                      .map(
+                        (e) => BottomNavigationBarItem(
+                          icon: e['color'] == null
+                              ? Icon(e['icon'] as IconData, size: 30)
+                              : InkWell(
+                                splashColor: Constants.iconBackground,
+                                onTap: (){},
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      gradient: const LinearGradient(
+                                        colors: [
+                                          Constants.buttonGradientLeft,
+                                          Constants.buttonGradientRight
+                                        ],
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                      ),
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
+                                    child: Icon(e['icon'] as IconData, size: 30,
+                                      color: Constants.primaryWhite,
+                                    ),
+                                  ),
+                              ),
+                          label: '',
+                        ),
+                      )
+                      .toList()
+                ],
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.category_outlined),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.category_outlined),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.category_outlined),
-                label: '',
-              ),
-            ],
+            ),
           ),
         ),
       ),

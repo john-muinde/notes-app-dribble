@@ -33,6 +33,7 @@ class _ToggleUpDrawerState extends State<ToggleUpDrawer> {
       width: MediaQuery.of(context).size.width * .95,
       padding: const EdgeInsets.only(right: 7),
       height: visible ? 300 : 180,
+      margin: const EdgeInsets.only(bottom: 12),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: Constants.cardBackground,

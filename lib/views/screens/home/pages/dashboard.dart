@@ -74,9 +74,6 @@ class _DashboardPageState extends State<DashboardPage>
                 icon: Icons.brush,
                 title: 'Design',
               ),
-              SizedBox(
-                height: 12,
-              ),
               ToggleUpDrawer(
                 backgroundColor: Constants.iconBackground2,
                 icon: Icons.person,
