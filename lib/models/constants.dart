@@ -20,6 +20,14 @@ extension Constants on Color {
   static const Color appText = Color.fromARGB(255, 107, 107, 107);
   static const Color mainText = Color.fromARGB(255, 212, 212, 212);
   static const Color mainText2 = Color.fromARGB(255, 250, 250, 250);
+
+  //!Landing pages
+  static const Color sliderBackground = Color(0xff414052);
+  static const Color iconBackground = Color(0xffac6dde);
+  static const Color iconBackground2 = Color(0xff70c4bf);
+  static const Color cardBackground = Color(0xff272732);
+  static const Color dueDate = Color(0xff82603e);
+  static const Color iconText = Color(0xff909095);
 }
 
 extension MaterialConstants on MaterialColor {

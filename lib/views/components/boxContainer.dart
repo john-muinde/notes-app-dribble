@@ -7,12 +7,16 @@ class BoxContainer extends StatelessWidget {
   final padding;
   final margin;
   final background;
+  final color;
+  final borderWidth;
   const BoxContainer({
     super.key,
     required this.child,
     this.padding = 13.0,
     this.margin = 13.0,
     this.background = .5,
+    this.color,
+    this.borderWidth,
   });
   @override
   Widget build(BuildContext context) {
@@ -20,11 +24,11 @@ class BoxContainer extends StatelessWidget {
       margin: EdgeInsets.all(margin),
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        color: Constants.boxGreyLight.withOpacity(background),
+        color: color ?? Constants.boxGreyLight.withOpacity(background),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: Constants.boxGreyLight.withOpacity(1),
-          width: 4.0,
+          width: borderWidth ?? 4.0,
           style: BorderStyle.solid,
           strokeAlign: BorderSide.strokeAlignOutside,
         ),
