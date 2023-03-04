@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      initialRoute: Routes.landingScreen,
+      initialRoute: Routes.sign_up,
       onGenerateRoute: Routes.controller,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
         primaryColor: Constants.backgroundBlack,
-        iconTheme: IconThemeData(color: Constants.iconText),
+        iconTheme: const IconThemeData(color: Constants.iconText),
         textTheme: const TextTheme(
           bodyLarge: TextStyle(
             color: Constants.primaryWhite,
