@@ -111,7 +111,7 @@ class _LandingScreenState extends State<LandingScreen> {
                               ? Icon(e['icon'] as IconData, size: 30)
                               : InkWell(
                                   splashColor: Constants.iconBackground,
-                                  onTap: () {},
+                                  onTap: () => _selectPage(2),
                                   child: Container(
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
