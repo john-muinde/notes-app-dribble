@@ -43,17 +43,17 @@ class _LogInScreenState extends State<LogInScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BoxContainer(
-                        background: .0,
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: const Icon(
-                            Icons.arrow_back_ios_new_outlined,
-                            color: Constants.primaryWhite,
-                            size: 30,
-                          ),
-                        ),
-                      ),
+                      // BoxContainer(
+                      //   background: .0,
+                      //   child: GestureDetector(
+                      //     onTap: () {},
+                      //     child: const Icon(
+                      //       Icons.arrow_back_ios_new_outlined,
+                      //       color: Constants.primaryWhite,
+                      //       size: 30,
+                      //     ),
+                      //   ),
+                      // ),
                       Container(
                         margin: const EdgeInsets.only(left: 10),
                         child: const Text(
