@@ -70,7 +70,7 @@ class _LandingScreenState extends State<LandingScreen> {
                   title: _pages[_selectedPageIndex]['title'] as String,
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.75,
+                  height: MediaQuery.of(context).size.height * 0.752,
                   color: Theme.of(context).primaryColor,
                   child: _pages[_selectedPageIndex]['page'] as Widget,
                 ),
