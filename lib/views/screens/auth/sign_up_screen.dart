@@ -36,6 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 6),
+              margin: EdgeInsets.only(top: 28),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       //   ),
                       // ),
                       Container(
-                        margin: const EdgeInsets.only(left: 10),
+                        margin: const EdgeInsets.only(left: 10, bottom: 20),
                         child: const Text(
                           'Sign up',
                           style: TextStyle(
@@ -145,9 +146,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         InkWell(
                           onTap: () => Navigator.of(context)
                               .pushReplacementNamed(Routes.login),
-                          child: const Text(
-                            'Log in',
-                            style: TextStyle(color: Constants.primaryWhite),
+                          child: Container(
+                            margin: const EdgeInsets.all(10),
+                            child: const Text(
+                              'Log in',
+                              style: TextStyle(color: Constants.primaryWhite),
+                            ),
                           ),
                         )
                       ],

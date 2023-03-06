@@ -32,7 +32,7 @@ class _LogInScreenState extends State<LogInScreen> {
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         body: Container(
-          margin: const EdgeInsets.only(left: 10),
+          margin: const EdgeInsets.only(left: 10,top: 38),
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 6),
@@ -55,7 +55,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       //   ),
                       // ),
                       Container(
-                        margin: const EdgeInsets.only(left: 10),
+                        margin: const EdgeInsets.only(left: 10,bottom: 20),
                         child: const Text(
                           'Log in',
                           style: TextStyle(
