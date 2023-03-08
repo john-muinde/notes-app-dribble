@@ -74,19 +74,19 @@ class SignUpScreen extends StatelessWidget {
                     children: [
                       TextFieldWidget(
                         label: 'Name',
-                        text: signUpController.name.value,
+                        text: 'Jane Doe',
                         obscureText: false.obs,
                         onChanged: signUpController.onNameChange,
                       ),
                       TextFieldWidget(
                         label: 'Email',
-                        text: signUpController.email.value,
+                        text: 'abc@email.com',
                         obscureText: false.obs,
                         onChanged: signUpController.onEmailChange,
                       ),
                       TextFieldWidget(
                         label: 'Password',
-                        text: signUpController.password.value,
+                        text: 'Pick a strong Password',
                         obscureText: false.obs,
                         onChanged: signUpController.onPasswordChange,
                         password: true,

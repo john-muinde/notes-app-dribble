@@ -12,8 +12,8 @@ class DashboardController extends GetxController {
   }
 }
 
-class DashboardPage extends GetView<DashboardController> {
-  const DashboardPage({super.key});
+class DashboardPage extends StatelessWidget {
+  final DashboardController controller = Get.put(DashboardController());
 
   @override
   Widget build(BuildContext context) {
