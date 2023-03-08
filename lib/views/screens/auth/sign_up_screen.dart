@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../controllers/login_sign_up_imports.dart';
+
+import '../../../controllers/exports/login_sign_up_imports.dart';
 import '../../../controllers/sign_up_controller.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -18,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 6),
-              margin: EdgeInsets.only(top: 28),
+              margin: const EdgeInsets.only(top: 28),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +44,7 @@ class SignUpScreen extends StatelessWidget {
                           )),
                     ],
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -69,7 +70,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   Column(
                     children: [
                       TextFieldWidget(
@@ -93,12 +94,12 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   ButtonWidget(
                     text: 'Create Account',
                     handlerFunction: signUpController.createAccount,
                   ),
-                  SizedBox(height: 7),
+                  const SizedBox(height: 7),
                   SizedBox(
                     width: double.maxFinite,
                     child: Row(

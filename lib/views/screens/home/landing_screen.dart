@@ -2,7 +2,7 @@ import 'package:daystar_login/controllers/landing_controller.dart';
 import 'package:daystar_login/views/components/custom_app_bar.dart';
 
 import '../../../models/constants.dart';
-import '../../../controllers/pages_imports.dart';
+import '../../../controllers/exports/pages_imports.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

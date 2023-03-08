@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../../controllers/exports/login_sign_up_imports.dart';
 import '../../../controllers/login_controller.dart';
-import '../../../controllers/login_sign_up_imports.dart';
+
 
 class LogInScreen extends StatelessWidget {
   final LogInController controller = Get.put(LogInController());
