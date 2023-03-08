@@ -1,30 +1,14 @@
-import 'package:daystar_login/routes.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import '../../components/textField.dart';
-import '../../../models/constants.dart';
-import '../../components/boxContainer.dart';
-import '../../components/buttonWidgets.dart';
-import '../../components/components.dart';
+import '../../../controllers/login_controller.dart';
+import '../../../controllers/login_sign_up_imports.dart';
 
-Widget sized({height = 10}) {
-  return SizedBox(
-    height: height + 0.0,
-  );
-}
+class LogInScreen extends StatelessWidget {
+  final LogInController controller = Get.put(LogInController());
 
-class LogInScreen extends StatefulWidget {
-  const LogInScreen({
-    super.key,
-  });
-
-  @override
-  State<LogInScreen> createState() => _LogInScreenState();
-}
-
-class _LogInScreenState extends State<LogInScreen> {
-  var value = true;
+  LogInScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +16,7 @@ class _LogInScreenState extends State<LogInScreen> {
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         body: Container(
-          margin: const EdgeInsets.only(left: 10,top: 38),
+          margin: const EdgeInsets.only(left: 10, top: 38),
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 6),
@@ -43,19 +27,8 @@ class _LogInScreenState extends State<LogInScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // BoxContainer(
-                      //   background: .0,
-                      //   child: GestureDetector(
-                      //     onTap: () {},
-                      //     child: const Icon(
-                      //       Icons.arrow_back_ios_new_outlined,
-                      //       color: Constants.primaryWhite,
-                      //       size: 30,
-                      //     ),
-                      //   ),
-                      // ),
                       Container(
-                        margin: const EdgeInsets.only(left: 10,bottom: 20),
+                        margin: const EdgeInsets.only(left: 10, bottom: 20),
                         child: const Text(
                           'Log in',
                           style: TextStyle(
@@ -65,17 +38,15 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                         ),
                       ),
-                      CupertinoSwitch(
-                        value: value,
-                        onChanged: (bool val) {
-                          setState(() {
-                            value = val;
-                          });
-                        },
+                      Obx(
+                        () => CupertinoSwitch(
+                          value: controller.obscurePassword.value,
+                          onChanged: (_) => controller.toggleObscurePassword(),
+                        ),
                       ),
                     ],
                   ),
-                  sized(height: 25),
+                  SizedBox(height: 25),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -101,27 +72,28 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ],
                   ),
-                  sized(height: 25),
+                  SizedBox(height: 25),
                   Column(
                     children: [
                       TextFieldWidget(
                         label: 'Email',
                         text: 'tim@apple.com',
+                        obscureText: false.obs,
                       ),
                       TextFieldWidget(
                         label: 'Password',
                         text: 'Pick a strong Password',
                         password: true,
+                        obscureText: false.obs,
                       ),
                     ],
                   ),
-                  sized(height: 25),
+                  SizedBox(height: 25),
                   ButtonWidget(
                     text: 'Log in',
-                    handlerFunction: () => Navigator.of(context)
-                        .pushReplacementNamed(Routes.landingScreen),
+                    handlerFunction: () => controller.login(),
                   ),
-                  sized(height: 25),
+                  SizedBox(height: 25),
                   SizedBox(
                     width: double.maxFinite,
                     child: Row(
@@ -138,13 +110,9 @@ class _LogInScreenState extends State<LogInScreen> {
                         const SizedBox(
                           width: 5,
                         ),
-                        InkWell(
-                          onTap: () => Navigator.of(context)
-                              .pushReplacementNamed(Routes.sign_up),
-                          child: const Text(
-                            'Sign up',
-                            style: TextStyle(color: Constants.primaryWhite),
-                          ),
+                        TapText(
+                          text: 'Sign up',
+                          onTap: () => Get.offNamed(Routes.sign_up),
                         )
                       ],
                     ),

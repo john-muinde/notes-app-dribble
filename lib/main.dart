@@ -1,6 +1,8 @@
+import 'package:daystar_login/controllers/routes_controller.dart';
 import 'package:daystar_login/models/constants.dart';
-import 'package:daystar_login/routes.dart';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,20 +13,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       initialRoute: Routes.sign_up,
-      onGenerateRoute: Routes.controller,
+      getPages: Routes.routes,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
         primaryColor: Constants.backgroundBlack,
         iconTheme: const IconThemeData(color: Constants.iconText),
         textTheme: const TextTheme(
-          bodyLarge: TextStyle(
-            color: Constants.primaryWhite,
-            fontSize: 18
-          ),
+          bodyLarge: TextStyle(color: Constants.primaryWhite, fontSize: 18),
           bodySmall: TextStyle(
             color: Constants.primaryWhite,
           ),
@@ -35,11 +34,10 @@ class MyApp extends StatelessWidget {
             color: Constants.primaryWhite,
           ),
           displaySmall: TextStyle(
-            color: Constants.mainText,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1,
-            fontSize: 30
-          ),
+              color: Constants.mainText,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1,
+              fontSize: 30),
           titleLarge: TextStyle(
             color: Constants.primaryWhite,
           ),

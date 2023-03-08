@@ -1,30 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import '../../../routes.dart';
-import '../../components/textField.dart';
-import '../../../models/constants.dart';
-import '../../components/boxContainer.dart';
-import '../../components/buttonWidgets.dart';
-import '../../components/components.dart';
+import '../../../controllers/login_sign_up_imports.dart';
+import '../../../controllers/sign_up_controller.dart';
 
-Widget sized({height = 10}) {
-  return SizedBox(
-    height: height + 0.0,
-  );
-}
+class SignUpScreen extends StatelessWidget {
+  final SignUpController signUpController = Get.put(SignUpController());
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({
-    super.key,
-  });
-
-  @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpScreen> {
-  var value = true;
+  SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,17 +26,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // BoxContainer(
-                      //   background: .0,
-                      //   child: GestureDetector(
-                      //     onTap: () {},
-                      //     child: const Icon(
-                      //       Icons.arrow_back_ios_new_outlined,
-                      //       color: Constants.primaryWhite,
-                      //       size: 30,
-                      //     ),
-                      //   ),
-                      // ),
                       Container(
                         margin: const EdgeInsets.only(left: 10, bottom: 20),
                         child: const Text(
@@ -66,17 +37,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
-                      CupertinoSwitch(
-                        value: value,
-                        onChanged: (bool val) {
-                          setState(() {
-                            value = val;
-                          });
-                        },
-                      ),
+                      Obx(() => CupertinoSwitch(
+                            value: signUpController.value.value,
+                            onChanged: signUpController.onValueChange,
+                          )),
                     ],
                   ),
-                  sized(height: 25),
+                  SizedBox(height: 25),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -102,31 +69,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ],
                   ),
-                  sized(height: 25),
+                  SizedBox(height: 25),
                   Column(
                     children: [
                       TextFieldWidget(
                         label: 'Name',
-                        text: 'Jane Doe',
+                        text: signUpController.name.value,
+                        obscureText: false.obs,
+                        onChanged: signUpController.onNameChange,
                       ),
                       TextFieldWidget(
                         label: 'Email',
-                        text: 'tim@apple.com',
+                        text: signUpController.email.value,
+                        obscureText: false.obs,
+                        onChanged: signUpController.onEmailChange,
                       ),
                       TextFieldWidget(
                         label: 'Password',
-                        text: 'Pick a strong Password',
+                        text: signUpController.password.value,
+                        obscureText: false.obs,
+                        onChanged: signUpController.onPasswordChange,
                         password: true,
                       ),
                     ],
                   ),
-                  sized(height: 25),
+                  SizedBox(height: 25),
                   ButtonWidget(
                     text: 'Create Account',
-                    handlerFunction: () => Navigator.of(context)
-                        .pushReplacementNamed(Routes.sign_up),
+                    handlerFunction: signUpController.createAccount,
                   ),
-                  sized(height: 25),
+                  SizedBox(height: 7),
                   SizedBox(
                     width: double.maxFinite,
                     child: Row(
@@ -143,16 +115,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         const SizedBox(
                           width: 5,
                         ),
-                        InkWell(
-                          onTap: () => Navigator.of(context)
-                              .pushReplacementNamed(Routes.login),
-                          child: Container(
-                            margin: const EdgeInsets.all(10),
-                            child: const Text(
-                              'Log in',
-                              style: TextStyle(color: Constants.primaryWhite),
-                            ),
-                          ),
+                        TapText(
+                          text: 'Login',
+                          onTap: () => Get.offNamed(Routes.login),
                         )
                       ],
                     ),

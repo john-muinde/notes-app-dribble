@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../models/constants.dart';
 
@@ -12,16 +13,18 @@ class BoxContainer extends StatelessWidget {
   final height;
   final width;
 
-  const BoxContainer(
-      {super.key,
-      required this.child,
-      this.padding = 13.0,
-      this.margin = 13.0,
-      this.background = .5,
-      this.color,
-      this.borderWidth,
-      this.height,
-      this.width});
+  const BoxContainer({
+    super.key,
+    required this.child,
+    this.padding = 13.0,
+    this.margin = 13.0,
+    this.background = .5,
+    this.color,
+    this.borderWidth,
+    this.height,
+    this.width,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(

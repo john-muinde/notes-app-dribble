@@ -1,26 +1,21 @@
 import 'package:daystar_login/views/components/collections_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../models/constants.dart';
-import '../../../components/boxContainer.dart';
+
 import '../../../components/slider_select.dart';
 
-class CollectionsPage extends StatefulWidget {
-  const CollectionsPage({super.key});
-
-  @override
-  State<CollectionsPage> createState() => _CollectionsPageState();
-}
-
-class _CollectionsPageState extends State<CollectionsPage>
-    with SingleTickerProviderStateMixin {
-  int activeItem = 2;
+class CollectionsController extends GetxController {
+  var activeItem = 2.obs;
 
   void changeItem(int item) {
-    setState(() {
-      activeItem = item;
-    });
+    activeItem.value = item;
   }
+}
+
+class CollectionsPage extends StatelessWidget {
+  final CollectionsController controller = Get.put(CollectionsController());
 
   @override
   Widget build(BuildContext context) {
@@ -31,18 +26,18 @@ class _CollectionsPageState extends State<CollectionsPage>
         Row(
           children: [
             SliderSelector(
-              defaultSelectedIndex: activeItem - 1,
+              defaultSelectedIndex: (controller.activeItem.value - 1).obs,
               items: <SlideSelectorItem>[
                 SlideSelectorItem(
                   text: 'Favourites',
                   onTap: () {
-                    changeItem(1);
+                    controller.changeItem(1);
                   },
                 ),
                 SlideSelectorItem(
                   text: 'All Collections',
                   onTap: () {
-                    changeItem(2);
+                    controller.changeItem(2);
                   },
                 )
               ],
